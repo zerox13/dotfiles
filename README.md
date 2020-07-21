@@ -1,9 +1,11 @@
-# dotfiles
-A repo to manage my dotfiles
+# Dotfiles
+A repo to manage my dotfiles. 
+
+This README file is made to make it easier for you if you wanna use my config.
 
 ## Dotfiles included
-* **.vimrc**
-* **.tmux.conf**
+* **.vimrc** Vim config
+* **.tmux.conf** Tmux config
 
 ## Setup
 To setup everything correctly, run the setup.sh script, which will make symbolic links to the files in the home dir
