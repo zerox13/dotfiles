@@ -1,7 +1,9 @@
+## TODO: Added files form the server and other machines
+
 # Dotfiles
 A repo to manage my dotfiles. 
 
-This README file is made to make it easier for you if you wanna use my config.
+This README file is made to make it easier for you if you wish to use my config.
 
 ## Dotfiles included
 * **.vimrc** Vim config
