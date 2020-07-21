@@ -1,4 +1,5 @@
-## TODO: Added files form the server and other machines
+## TODO: 
+* Added files form the server and other machines
 
 # Dotfiles
 A repo to manage my dotfiles. 
