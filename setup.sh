@@ -1,4 +1,9 @@
 #!/bin/bash
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -f ~/dotfiles/.vimrc ~/.vimrc
+ln -f ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -f ~/dotfiles/.bashrc ~/.bashrc
+ln -f ~/dotfiles/.zshrc ~/.zshrc
+
+ln -f ~/dotfiles/.functions ~/.functions
+ln -f ~/dotfiles/.aliases ~/.aliases
 
