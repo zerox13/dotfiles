@@ -11,3 +11,7 @@ if [ -f ~/.functions ]; then
 . ~/.functions
 fi
 
+#-------> Paths <----------
+if [ -f ~/.paths ]; then
+. ~/.paths
+fi
