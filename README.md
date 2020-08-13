@@ -1,4 +1,4 @@
-![](https://i.imgur.com/ASnaJqX.png)
+![](https://i.imgur.com/AKIRizD.png)
 
 # Dotfiles
 A repo to manage my dotfiles across all my machines. 
