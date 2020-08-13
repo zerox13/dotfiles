@@ -1,3 +1,5 @@
+![](https://i.imgur.com/ASnaJqX.png)
+
 # Dotfiles
 A repo to manage my dotfiles across all my machines. 
 
