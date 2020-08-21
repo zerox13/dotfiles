@@ -1,12 +1,5 @@
+#! /usr/bin/zsh
 #-------> My Function <----------
-#To connect itchy
-function uu1 () {
-	sshfs dv18aar@itchy.cs.umu.se:/home/"$@" ~/Remote
-
- }
-function hitta(){
-	grep -Rw "$1" -e "$2"
-}
 
 function covid-19(){
 	curl https://corona-stats.online/$1
