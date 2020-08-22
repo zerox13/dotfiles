@@ -13,5 +13,6 @@ if [[ `which i3` == *i3 ]]
 then
 	ln -f ~/dotfiles/i3/config ~/.config/i3
 	ln -f ~/dotfiles/i3/i3blocks ~/.config/i3
+	echo "i3 is set up"
 fi
 
