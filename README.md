@@ -1,17 +1,25 @@
-## TODO: 
-* Added files form the server and other machines
+![](https://i.imgur.com/AKIRizD.png)
 
 # Dotfiles
-A repo to manage my dotfiles. 
+A repo to manage my dotfiles across all my machines. 
 
 This README file is made to make it easier for you if you wish to use my config.
+To use it you can simply fork the repo.
 
 ## Dotfiles included
-* **.vimrc** Vim config
-* **.tmux.conf** Tmux config
+* **.vimrc**  Config of the vim editor
+* **.tmux.conf**
+* **.bashrc** 
+* **.zhshrc**
+
+The below files are some kinde of help files to the the above files. just to keep everything organized
+* **.functions** Here you find all the shell functions
+* **.paths** Here where you export the paths (unnecessary, i know!)
+* **.aliases** As the names says, aliasesssss!
+
 
 ## Setup
-To setup everything correctly, run the setup.sh script, which will make symbolic links to the files in the home dir
+To setup everything correctly, run the setup.sh script, which will make hard links to the files in the home dir, you can make the links symbolic by modifing the setup.sh if you wish to.
 ```bash
 ./setup.sh
 ```
@@ -19,3 +27,7 @@ You might also need to give the setup.sh script execute permission before runnin
 ```bash
 chmod +x setup.sh
 ```
+
+**OBS** DON'T  modify the dotfiles in your home directory. Instead modify the files in the repo folder and run the setup script again. 
+This is important if you want every thing syncd with the repo
+
