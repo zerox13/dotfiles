@@ -1,15 +1,14 @@
 autoload -U colors && colors
 PROMPT="%(?.%F{green}√.%F{red}?) %F{red}%!%B %F{yellow}Abbe%F{red}@%F{blue}%m %b%F{white}[%3~] %F{red}%#-->%F{yellow} "
 
-
-if [[ `which brew` == *brew ]] #Do things related to my mac (There should be a better way to detect the OS!!!)
-then 
+#Do things related to my mac (There should be a better way to detect the OS!!!)
+if [[ "$OSTYPE" == "darwin"* ]] then 
 	 #set the path to zsh highlighting dynamic
     zshHighlightPath="/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	 export PATH="$PATH:/Users/abdulsalamaldahir/development/flutter/bin"
 else
     #TODO: Change this to debian/Linux path
-    zshHighlight="/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    zshHighlightPath="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 #Auto complete
