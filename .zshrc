@@ -2,7 +2,6 @@ autoload -U colors && colors
 PROMPT="%(?.%F{green}√.%F{red}?) %F{red}%!%B %F{yellow}Abbe%F{red}@%F{blue}%m %b%F{white}[%3~] %F{red}%#-->%F{yellow} "
 
 
-zshHighlightPath=""
 if [[ `which brew` == *brew ]] #Do things related to my mac (There should be a better way to detect the OS!!!)
 then 
 	 #set the path to zsh highlighting dynamic
