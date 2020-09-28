@@ -14,7 +14,6 @@ To use it you can simply fork the repo.
 
 The below files are some kinde of help files to the the above files. just to keep everything organized
 * **.functions** Here you find all the shell functions
-* **.paths** Here where you export the paths (unnecessary, i know!)
 * **.aliases** As the names says, aliasesssss!
 
 

@@ -10,14 +10,14 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         echo "i3 is set up"
     fi
     #TODO: Set the path of vscode setting on linux
-
+    vscodePath="/home/dv18/dv18aar/.config/Code/User"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
     vscodePath="/Users/abdulsalamaldahir/Library/Application Support/Code/User"
-    ln -f ~/dotfiles/vscode/settings.json $vscodePath
 fi
 
 #Handle general settings
+ln -f ~/dotfiles/vscode/settings.json $vscodePath
 ln -f ~/dotfiles/.vimrc ~/.vimrc
 ln -f ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -f ~/dotfiles/.bashrc ~/.bashrc

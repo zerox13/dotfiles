@@ -1,6 +1,7 @@
 {
     "workbench.colorTheme": "Bluloco Dark",
     "python.pythonPath": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "window.menuBarVisibility": "toggle",
     "vim.insertModeKeyBindings":[
         {
             "before": ["j", "k"],
