@@ -1,4 +1,15 @@
 #!/bin/bash
+
+setupVim () {
+	if [! -d "../.vim/bundle/Vundle.vim/" ]; then
+		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim
+		echo cloned Vundle, You might need to run PluginInstall in Vim 
+	fi
+	# Linking the vimrc file
+	ln -f ~/dotfiles/.vimrc ~/.vimrc
+
+}
+
 vscodePath=""
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -18,15 +29,15 @@ fi
 
 #Handle general settings
 ln -f ~/dotfiles/vscode/settings.json $vscodePath
-ln -f ~/dotfiles/.vimrc ~/.vimrc
 ln -f ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -f ~/dotfiles/.bashrc ~/.bashrc
 ln -f ~/dotfiles/.functions ~/.functions
 ln -f ~/dotfiles/.aliases ~/.aliases
-
+setupVim
 
 if [[ `which zsh` == *zsh ]]; then
     ln -f ~/dotfiles/.zshrc ~/.zshrc
     echo "zsh is set up"
 fi
+
 
