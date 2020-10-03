@@ -1,9 +1,10 @@
 #!/bin/bash
 
 setupVim () {
-	if [! -d "../.vim/bundle/Vundle.vim/" ]; then
+	if [ ! -d "../.vim/bundle/Vundle.vim/" ]; then
 		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim
-		echo cloned Vundle, You might need to run PluginInstall in Vim 
+		vim +PluginInstall +qall
+		echo cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
 	fi
 	# Linking the vimrc file
 	ln -f ~/dotfiles/.vimrc ~/.vimrc
