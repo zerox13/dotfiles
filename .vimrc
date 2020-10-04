@@ -47,7 +47,7 @@ let g:gruvbox_contrast_dark = '(hard)'
 
 colorscheme gruvbox
 
-"set t_Co=256
+set t_Co=256
 syntax on
 set number
 set relativenumber
