@@ -26,8 +26,8 @@ compinit
 _comp_options+=(globdots) #Include hidden files
 
 #Vim 
-bindkey -v
-export KEYTIMEOUT=1
+#bindkey -v
+#export KEYTIMEOUT=1
 
 #-----< Update the alias >------
 if [ -f ~/.aliases ]; then
