@@ -54,8 +54,6 @@ set relativenumber
 set tabstop=3
 set wildmenu
 set colorcolumn=80
-set listchars=tab:\¦\ 
-set list
 set smartindent
 set shiftwidth=3
 inore jk <Esc>
@@ -76,3 +74,5 @@ map I :! pdflatex %<CR><CR>
 map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
 "Bash autoX
 "map <C-p> :w<CR>:!bash %<CR>
+set encoding=utf-8
+scriptencoding utf-8
