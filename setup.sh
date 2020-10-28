@@ -25,7 +25,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     vscodePath="/home/dv18/dv18aar/.config/Code/User"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
-    vscodePath="/Users/abdulsalamaldahir/Library/Application Support/Code/User"
+    vscodePath="/Users/abdulsalamaldahir/Library/Application\ Support/Code/User"
 fi
 
 #Handle general settings

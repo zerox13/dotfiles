@@ -11,7 +11,8 @@
 "editor.lineNumbers": "relative",
 "window.zoomLevel": 1,
 "files.exclude": {
-    "**/*.meta": true
+    "**/*.meta": true,
+    "*.o": true
 },
 "[dart]": {
     "editor.formatOnSave": true,
