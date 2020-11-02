@@ -15,7 +15,7 @@ if [[ "$OSTYPE" == "darwin"* ]] then
 	 export PATH="$PATH:/Users/abdulsalamaldahir/development/flutter/bin"
 else
     #TODO: Change this to debian/Linux path
-    zshHighlightPath="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    zshHighlightPath="usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 #Auto complete

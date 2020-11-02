@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'davidhalter/jedi-vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -70,7 +71,9 @@ set clipboard=unnamed
 vnoremap <C-y> "+y
 map <C-p> "+p
 "Latex autocompile and open pdf
-map I :! pdflatex %<CR><CR>
+"map I :! pdflatex %<CR><CR> "This should be changed as I used for other
+"things
+"
 map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
 "Bash autoX
 "map <C-p> :w<CR>:!bash %<CR>
