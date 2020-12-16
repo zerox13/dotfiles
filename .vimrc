@@ -10,8 +10,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+
+"The theme
 Plugin 'morhetz/gruvbox'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'alvan/vim-closetag'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -52,11 +55,11 @@ set t_Co=256
 syntax on
 set number
 set relativenumber
-set tabstop=3
+set tabstop=2
 set wildmenu
 set colorcolumn=80
 set smartindent
-set shiftwidth=3
+set shiftwidth=2
 inore jk <Esc>
 "Disable arrow-keys
 map <Down> <NOP>
