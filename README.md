@@ -3,7 +3,6 @@
 # Dotfiles
 A repo to manage my dotfiles across all my machines. 
 
-This README file is made to make it easier for you if you wish to use my config.
 To use it you can simply fork the repo, and try to edit it so it works for you
 
 ## Dotfiles included
