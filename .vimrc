@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'alvan/vim-closetag'
+Plugin 'preservim/nerdtree'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -82,3 +83,6 @@ map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
 "map <C-p> :w<CR>:!bash %<CR>
 set encoding=utf-8
 scriptencoding utf-8
+
+"Open nerdTree
+map <C-n> :NERDTreeToggle<CR>
