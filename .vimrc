@@ -13,9 +13,12 @@ Plugin 'vim-airline/vim-airline'
 
 "The theme
 Plugin 'morhetz/gruvbox'
+
+"The python autoComplete plugin
 Plugin 'davidhalter/jedi-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'preservim/nerdtree'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
