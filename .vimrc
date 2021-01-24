@@ -64,6 +64,7 @@ set wildmenu
 set colorcolumn=80
 set smartindent
 set shiftwidth=2
+set pastetoggle=<F2>
 inore jk <Esc>
 "Disable arrow-keys
 map <Down> <NOP>
@@ -77,11 +78,13 @@ set clipboard=unnamed
 "copyy and paste between system and vim rigister 
 vnoremap <C-y> "+y
 map <C-p> "+p
+
 "Latex autocompile and open pdf
 "map I :! pdflatex %<CR><CR> "This should be changed as I used for other
 "things
 "
 map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
+
 "Bash autoX
 "map <C-p> :w<CR>:!bash %<CR>
 set encoding=utf-8
