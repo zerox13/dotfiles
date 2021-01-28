@@ -19,6 +19,9 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'preservim/nerdtree'
 
+"Haskell plugin
+Plugin 'dag/vim2hs'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
