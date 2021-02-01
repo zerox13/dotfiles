@@ -1,3 +1,4 @@
-:set prompt "λ> "
+:set prompt "\027[31mλ>\027[0m "
 :def clear \_ -> return $ ":!clear"
+
 
