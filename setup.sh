@@ -52,6 +52,7 @@ generalSetup(){
 	ln -f ~/dotfiles/.bashrc ~/.bashrc
 	ln -f ~/dotfiles/.functions ~/.functions
 	ln -f ~/dotfiles/.aliases ~/.aliases
+	ln -f ~/dotfiles/.ghci ~/.ghci
 
 	if [[ `which zsh` == *zsh ]]; then
 		ln -f ~/dotfiles/.zshrc ~/.zshrc
