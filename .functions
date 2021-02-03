@@ -1,6 +1,10 @@
 #! /usr/bin/zsh
 #-------> My Function <----------
 
+function installBaseKit(){
+	sudo pacman -Syu ranger xcompmgr compton feh scrot dmenu xlockmore
+}
+
 function covid-19(){
 	curl https://corona-stats.online/$1
 }

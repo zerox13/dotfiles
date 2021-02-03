@@ -67,7 +67,7 @@ generalSetup(){
  [ $# != 1 ] && printHelp && exit 0 
 
  case $1 in 
-	 all) generalSetup && setupVim && setupI3 ;;
+	 all) generalSetup && setupVim;;
 	 general) generalSetup;;
 	 vim) setupVim;;
 	 i3) setupI3;;
