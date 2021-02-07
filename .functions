@@ -2,6 +2,7 @@
 #-------> My Function <----------
 
 function installBaseKit(){
+	[ "$OSTYPE" == "linux-gnu"* ] && 
 	sudo pacman -Syu ranger xcompmgr compton feh scrot dmenu xlockmore
 }
 
