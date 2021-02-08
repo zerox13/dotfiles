@@ -14,14 +14,11 @@ printHelp(){
 
 setupVim () {
 	echo "Setting vim up ..."
-	if [ ! -d "../.vim/bundle/Vundle.vim/" ]; then
-		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim
-		vim +PluginInstall +qall
-		echo cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
-	fi
-	# Linking the vimrc file
+	[ ! -d "../.vim/bundle/Vundle.vim/" ] &&
+		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
+		vim +PluginInstall +qall && 
+		echo "cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim"
 	ln -f ~/dotfiles/.vimrc ~/.vimrc
-
 }
 
 setupI3(){
@@ -31,8 +28,8 @@ setupI3(){
 		ln -f ~/dotfiles/i3/config ~/.config/i3
 		ln -f ~/dotfiles/i3/i3blocks ~/.config/i3
 		echo "i3 is set up"
-	fi
-}
+		fi
+	}
 
 setupVscode(){
 	echo "Setting vscode up ..."
@@ -54,10 +51,9 @@ generalSetup(){
 	ln -f ~/dotfiles/.aliases ~/.aliases
 	ln -f ~/dotfiles/.ghci ~/.ghci
 
-	if [[ `which zsh` == *zsh ]]; then
+	[[ `which zsh` == *zsh ]] &&
 		ln -f ~/dotfiles/.zshrc ~/.zshrc
 		echo "zsh is set up"
-	fi
 }
 
  #setupVim

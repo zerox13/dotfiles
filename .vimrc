@@ -1,30 +1,22 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Auther: Abdulsalam Aldahir 
+" GitHub: Zerox13
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 
-"The theme
-Plugin 'morhetz/gruvbox'
 
-"The python autoComplete plugin
-Plugin 'davidhalter/jedi-vim'
-Plugin 'alvan/vim-closetag'
-Plugin 'preservim/nerdtree'
-
-"Haskell plugin
-Plugin 'dag/vim2hs'
+Plugin 'morhetz/gruvbox'           "My theme
+Plugin 'davidhalter/jedi-vim'      "The python autoComplete plugin
+Plugin 'alvan/vim-closetag'        "Closing tag for html
+Plugin 'preservim/nerdtree'        "The file tree plugin
+Plugin 'SQLUtilities'              "SQL tools, (formatter)
+Plugin 'Align'                     "SQLUtilities Dependencie 
+Plugin 'dag/vim2hs'                "Haskell plugin
 
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -39,7 +31,6 @@ Plugin 'dag/vim2hs'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -52,14 +43,14 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-set bg=dark 
+
+
+" ========== General Settings  ========
+
+inore jk <Esc>
 let g:gruvbox_contrast_dark = '(hard)'
-
-colorscheme gruvbox
-
+set bg=dark 
 set t_Co=256
-syntax on
 set number
 set relativenumber
 set tabstop=2
@@ -68,30 +59,41 @@ set colorcolumn=80
 set smartindent
 set shiftwidth=2
 set pastetoggle=<F2>
-inore jk <Esc>
-"Disable arrow-keys
+set encoding=utf-8
+
+
+filetype off                  " required
+colorscheme gruvbox
+syntax on
+scriptencoding utf-8
+
+
+" ========== My maping ========
+
+" -- Disable arrow-keys
 map <Down> <NOP>
 map <Up> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
-"auto close brackets
-noremap {<cr> {<cr>}<c-o><s-o>}
 
-set clipboard=unnamed
-"copyy and paste between system and vim rigister 
+" -- Open nerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" -- auto close brackets
+"noremap {<cr> {<cr>}<c-o><s-o>}
+inoremap {<CR> {<CR>}<C-o>O
+noremap (<cr> (<cr>)<c-o><s-o>)
+
+" -- copyy and paste between system and vim rigister 
+"set clipboard=unnamedplus
 vnoremap <C-y> "+y
 map <C-p> "+p
 
-"Latex autocompile and open pdf
+" ========== END  ===========
+
+" =========== Latex autocompile and open pdf =========
 "map I :! pdflatex %<CR><CR> "This should be changed as I used for other
 "things
 "
-map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
-
-"Bash autoX
-"map <C-p> :w<CR>:!bash %<CR>
-set encoding=utf-8
-scriptencoding utf-8
-
-"Open nerdTree
-map <C-n> :NERDTreeToggle<CR>
+"map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
+" ===========        END         ============
