@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Auther: Abdulsalam Aldahir
+
+
 printHelp(){
 	echo "Usage:"
 	echo -e "\t./setup <option>"
@@ -18,6 +21,11 @@ setupVim () {
 		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
 		vim +PluginInstall +qall && 
 		echo "cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim"
+	git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
+	vim +PluginInstall +qall &&
+	echo cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
+		
+	# Linking the vimrc file
 	ln -f ~/dotfiles/.vimrc ~/.vimrc
 }
 
@@ -29,7 +37,12 @@ setupI3(){
 		ln -f ~/dotfiles/i3/i3blocks ~/.config/i3
 		echo "i3 is set up"
 		fi
-	}
+
+	which i3 1> /dev/null && 
+	ln -f ~/dotfiles/i3/config ~/.config/i3 &&
+	ln -f ~/dotfiles/i3/i3blocks ~/.config/i3 &&
+	echo "i3 is set up"
+}
 
 setupVscode(){
 	echo "Setting vscode up ..."
@@ -54,6 +67,9 @@ generalSetup(){
 	[[ `which zsh` == *zsh ]] &&
 		ln -f ~/dotfiles/.zshrc ~/.zshrc
 		echo "zsh is set up"
+	which zsh 1> /dev/null && 
+	ln -f ~/dotfiles/.zshrc ~/.zshrc &&
+	echo "zsh is set up"
 }
 
  #setupVim
@@ -63,7 +79,7 @@ generalSetup(){
  [ $# != 1 ] && printHelp && exit 0 
 
  case $1 in 
-	 all) generalSetup && setupVim && setupI3 ;;
+	 all) generalSetup && setupVim;;
 	 general) generalSetup;;
 	 vim) setupVim;;
 	 i3) setupI3;;
