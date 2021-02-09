@@ -57,5 +57,6 @@ fi
 
 PROMPT_COMMAND='source ~/.bashrc'
 
+eval "$(starship init bash)"
 ## THis is a comment
 

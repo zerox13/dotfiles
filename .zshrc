@@ -42,3 +42,7 @@ fi
 
 #This should be last
 source $zshHighlightPath 2> /dev/null
+
+#This should also be last?
+#This is the starship prompt thing
+eval "$(starship init zsh)"

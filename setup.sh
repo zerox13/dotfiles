@@ -2,6 +2,17 @@
 
 #Auther: Abdulsalam Aldahir
 
+BOLD="$(tput bold 2>/dev/null || echo '')"
+GREY="$(tput setaf 0 2>/dev/null || echo '')"
+UNDERLINE="$(tput smul 2>/dev/null || echo '')"
+RED="$(tput setaf 1 2>/dev/null || echo '')"
+GREEN="$(tput setaf 2 2>/dev/null || echo '')"
+YELLOW="$(tput setaf 3 2>/dev/null || echo '')"
+BLUE="$(tput setaf 4 2>/dev/null || echo '')"
+MAGENTA="$(tput setaf 5 2>/dev/null || echo '')"
+NO_COLOR="$(tput sgr0 2>/dev/null || echo '')"
+
+
 
 printHelp(){
 	echo "Usage:"
@@ -15,37 +26,55 @@ printHelp(){
 	echo -e "\thelp\t Prints this menu"
 }
 
+# === Some help functions for error handling ==== 
+info() {
+  printf "%s\n" "${BOLD}${GREY}>${NO_COLOR} $*"
+}
+
+warn() {
+  printf "%s\n" "${YELLOW}! $*${NO_COLOR}"
+}
+
+error() {
+  printf "%s\n" "${RED}x $*${NO_COLOR}" >&2
+}
+
+completed() {
+  printf "%s\n" "${GREEN}✓${NO_COLOR} $*"
+}
+
+
+# ------------------------------------------------
+
 setupVim () {
-	echo "Setting vim up ..."
+	info "Setting vim up ..."
 	[ ! -d "../.vim/bundle/Vundle.vim/" ] &&
 		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
 		vim +PluginInstall +qall && 
-		echo "cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim"
+		info "cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim"
 	git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
 	vim +PluginInstall +qall &&
-	echo cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
+	info cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
 		
 	# Linking the vimrc file
 	ln -f ~/dotfiles/.vimrc ~/.vimrc
 }
 
 setupI3(){
-	echo "Setting i3 up ..."
-	if [[ `which i3` == *i3 ]]
-	then
-		ln -f ~/dotfiles/i3/config ~/.config/i3
-		ln -f ~/dotfiles/i3/i3blocks ~/.config/i3
-		echo "i3 is set up"
-		fi
+	info "Setting i3 up ..."
+	[[ `which i3` == *i3 ]] &&
+		ln -f ~/dotfiles/i3/config ~/.config/i3 &&
+		ln -f ~/dotfiles/i3/i3blocks ~/.config/i3 &&
+		completed "i3 is set up"
 
 	which i3 1> /dev/null && 
 	ln -f ~/dotfiles/i3/config ~/.config/i3 &&
 	ln -f ~/dotfiles/i3/i3blocks ~/.config/i3 &&
-	echo "i3 is set up"
+	completed "i3 is set up"
 }
 
 setupVscode(){
-	echo "Setting vscode up ..."
+	info "Setting vscode up ..."
 	vscodePath=""
 	#TODO: Set the path of vscode setting on linux
 	[ "$OSTYPE" == "linux-gnu"* ] && vscodePath="/home/dv18/dv18aar/.config/Code/User"
@@ -56,7 +85,7 @@ setupVscode(){
 }
 
 generalSetup(){
-	echo "general Setup is going on ..."
+	info "General Setup is going on ..."
 	#Handle general settings
 	ln -f ~/dotfiles/.tmux.conf ~/.tmux.conf
 	ln -f ~/dotfiles/.bashrc ~/.bashrc
@@ -64,12 +93,12 @@ generalSetup(){
 	ln -f ~/dotfiles/.aliases ~/.aliases
 	ln -f ~/dotfiles/.ghci ~/.ghci
 
-	[[ `which zsh` == *zsh ]] &&
-		ln -f ~/dotfiles/.zshrc ~/.zshrc
-		echo "zsh is set up"
-	which zsh 1> /dev/null && 
-	ln -f ~/dotfiles/.zshrc ~/.zshrc &&
-	echo "zsh is set up"
+
+	which zsh 1> /dev/null && ln -f ~/dotfiles/.zshrc ~/.zshrc &&
+	completed "zsh is set up"
+
+	! which starship 1> /dev/null &&
+	warn "Install starshell?"
 }
 
  #setupVim
