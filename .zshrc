@@ -40,6 +40,11 @@ if [ -f ~/.functions ]; then
 . ~/.functions
 fi
 
+if [ -f ~/.self ]; then
+. ~/.self
+fi
+
+
 #This should be last
 source $zshHighlightPath 2> /dev/null
 

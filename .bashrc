@@ -8,14 +8,14 @@ blod=$(tput bold);
 #reset=$(tput sgr0);
 reset=$(tput setaf 013);
 
-PS1="\[${yellow}\]\A";
-PS1+="\[${red}\] Abbe";
-PS1+="\[${white}\]@";
-PS1+="\[${yellow}\]\h";
-PS1+="\[${green}\][\W]";
-PS1+="\[${white}\] \$";
-PS1+="\[${green}\]---> ";
-PS1+="\[${reset}\]";
+#PS1="\[${yellow}\]\A";
+#PS1+="\[${red}\] Abbe";
+#PS1+="\[${white}\]@";
+#PS1+="\[${yellow}\]\h";
+#PS1+="\[${green}\][\W]";
+#PS1+="\[${white}\] \$";
+#PS1+="\[${green}\]---> ";
+#PS1+="\[${reset}\]";
 
 #------------
 #yellow=$(tput setaf 228);
