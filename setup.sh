@@ -92,6 +92,7 @@ generalSetup(){
 	ln -f ~/dotfiles/.functions ~/.functions
 	ln -f ~/dotfiles/.aliases ~/.aliases
 	ln -f ~/dotfiles/.ghci ~/.ghci
+	ln -f ~/dotfiles/starship.toml ~/.config/starship.toml
 
 
 	which zsh 1> /dev/null && ln -f ~/dotfiles/.zshrc ~/.zshrc &&

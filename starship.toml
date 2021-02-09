@@ -1,0 +1,7 @@
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+
+[hostname]
+ssh_only = false
