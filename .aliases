@@ -6,7 +6,6 @@ alias ls='ls -al'
 alias ll='ls -l'
 
 alias c='clear'
-alias itchy='ssh -t dv18aar@itchy.cs.umu.se "/usr/bin/zsh"'
 alias cdR='cd ~/Remote'
 alias uumu='umount ~/Remote'
 alias cdw='cd ~/Remote/cwork'
