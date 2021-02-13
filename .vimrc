@@ -15,6 +15,7 @@ Plugin 'preservim/nerdtree'        "The file tree plugin
 Plugin 'SQLUtilities'              "SQL tools, (formatter)
 Plugin 'Align'                     "SQLUtilities Dependencie 
 Plugin 'dag/vim2hs'                "Haskell plugin
+Plugin 'benmills/vimux'            "A plugin to interact with tmux 
 
 " The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
