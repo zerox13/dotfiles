@@ -97,7 +97,9 @@ vnoremap <C-y> "+y
 map <C-p> "+p
 
 "--> 
-nmap <leader>z :call VimuxRunCommand("ls") <cr>
+nmap <leader>l :call VimuxRunCommand("ls") <cr>
+nmap <leader>m :call VimuxRunCommand("make") <cr>
+nmap <leader>r :call VimuxRunCommand("./a") <cr>
 " ============================================================ END  ===========
 
 " ==================================== Latex autocompile and open pdf =========
