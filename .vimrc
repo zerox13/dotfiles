@@ -69,7 +69,7 @@ syntax on
 scriptencoding utf-8
 
 
-" ========== My maping ========
+"=========================================================== My maping ========
 
 " -- Disable arrow-keys
 map <Down> <NOP>
@@ -85,16 +85,19 @@ map <C-n> :NERDTreeToggle<CR>
 inoremap {<CR> {<CR>}<C-o>O
 noremap (<cr> (<cr>)<c-o><s-o>)
 
-" -- copyy and paste between system and vim rigister 
+" --> copyy and paste between system and vim rigister 
 "set clipboard=unnamedplus
 vnoremap <C-y> "+y
 map <C-p> "+p
 
-" ========== END  ===========
+"--> 
+nmap <leader>z :call VimuxRunCommand("ls") <cr>
+" ============================================================ END  ===========
 
-" =========== Latex autocompile and open pdf =========
+" ==================================== Latex autocompile and open pdf =========
+"
 "map I :! pdflatex %<CR><CR> "This should be changed as I used for other
 "things
 "
 "map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
-" ===========        END         ============
+" ============================================================ END  ===========
