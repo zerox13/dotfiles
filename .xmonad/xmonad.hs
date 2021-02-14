@@ -1,11 +1,21 @@
 --
--
 -- Normally, you'd only override those defaults you care about.
 --
-
 import XMonad
 import Data.Monoid
 import System.Exit
+import System.IO (hPutStrLn)
+import XMonad.Util.SpawnOnce
+import XMonad.Util.Run
+-- Hooks
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
+import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ServerMode
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.WorkspaceHistory
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -64,7 +74,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
-    , ((modm .|. shiftMask, xK_q     ), kill)
+    , ((modm .|. shiftMask, xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -121,7 +131,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_c     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -176,7 +186,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -230,6 +240,18 @@ myEventHook = mempty
 --
 myLogHook = return ()
 
+--myLogHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP { 
+--  ppOutput = \x -> hPutStrLn xmb x,
+--  ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]", -- Current workspace in xmobar
+--  ppVisible = xmobarColor "#98be65" ""               , -- Visible but not current workspace
+--  ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""  , -- Hidden workspaces in xmobar
+--  ppHiddenNoWindows = xmobarColor "#c792ea" ""       , -- Hidden workspaces (no windows)
+--  ppTitle = xmobarColor "#b3afc2" "" . shorten 60    , -- Title of active window in xmobar
+--  ppSep =  "<fc=#666666> <fn=1>|</fn> </fc>"         , -- Separators in xmobar
+--  ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!" , -- Urgent workspace
+-- 	ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+--}
+
 ------------------------------------------------------------------------
 -- Startup hook
 
@@ -238,7 +260,12 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+		spawnOnce "rmmod pcspkr"
+		spawnOnce "compton &"
+		spawnOnce "nm-applet &"
+		spawnOnce "blueman-applet &"
+		spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -247,7 +274,8 @@ myStartupHook = return ()
 --
 main :: IO ()
 main = do 
-  xmonad defaults
+  xmproc <- spawnPipe "xmobar /home/zerox/.config/xmobar/xmobarD.conf"
+  xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
