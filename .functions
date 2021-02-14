@@ -5,7 +5,6 @@ function itchy(){
 	ssh -t dv18aar@itchy.cs.umu.se "/usr/bin/zsh"
 }
 function installBaseKit(){
-	[ "$OSTYPE" == "linux-gnu"* ] && 
 	sudo pacman -Syu ranger xcompmgr compton feh scrot dmenu xlockmore noto-fonts-emoji
 }
 
