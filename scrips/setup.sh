@@ -48,16 +48,15 @@ completed() {
 
 setupVim () {
 	info "Setting vim up ..."
-	[ ! -d "../.vim/bundle/Vundle.vim/" ] &&
+	[[ ! -d "../.vim/bundle/Vundle.vim/" ]] &&
 		git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
 		vim +PluginInstall +qall && 
-		info "cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim"
-	git clone https://github.com/VundleVim/Vundle.vim.git ../.vim/bundle/Vundle.vim &&
-	vim +PluginInstall +qall &&
-	info cloned Vundle, and plugins should be installed, You might need to run PluginInstall in Vim 
-		
+		completed "cloned Vundle, and plugins should be installed!" &&
+		info " You might need to run PluginInstall in Vim"
+	
 	# Linking the vimrc file
-	ln -f ~/dotfiles/.vimrc ~/.vimrc
+	ln -f ~/dotfiles/.vimrc ~/.vimrc &&
+		completed "Vim is set up"
 }
 
 setupI3(){
