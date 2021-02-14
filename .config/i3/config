@@ -62,11 +62,11 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xcompmgr
 
 #Start compton to get the compositing to the terminal
-exec --no-startup-id /usr/bin/compton
+exec --no-startup-id ~/usr/bin/compton
 
 #Setting the Wallpaper
 #exec --no-startup-id ~/usr/bin/feh --bg-scale Pictures/wp/simonS2.jpg
-exec --no-startup-id /usr/bin/feh --bg-scale Pictures/wp/wp.jpg
+exec --no-startup-id ~/usr/bin/feh --bg-scale Pictures/wp/wp.jpg
 
 #Disable pcspkr 
 exec --no-startup-id rmmod pcspkr
@@ -85,7 +85,7 @@ for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/xfce4-terminal
+bindsym $mod+Return exec usr/bin/st
 bindsym $mod+Shift+Return exec gnome-terminal
 #start ranger
 bindsym $mod+f  exec --no-startup-id usr/bin/st -e ~/usr/bin/ranger
