@@ -6,16 +6,22 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'morhetz/gruvbox'           " My theme
+Plugin 'preservim/nerdtree'        " The file tree plugin
 
+" Languages
+Plugin 'vim-python/python-syntax'
+"Plugin 'davidhalter/jedi-vim'      " The python autoComplete plugin
+Plugin 'SQLUtilities'              " SQL tools, (formatter)
+Plugin 'Align'                     " SQLUtilities Dependencie 
 
-Plugin 'morhetz/gruvbox'           "My theme
-Plugin 'davidhalter/jedi-vim'      "The python autoComplete plugin
-Plugin 'alvan/vim-closetag'        "Closing tag for html
-Plugin 'preservim/nerdtree'        "The file tree plugin
-Plugin 'SQLUtilities'              "SQL tools, (formatter)
-Plugin 'Align'                     "SQLUtilities Dependencie 
-Plugin 'dag/vim2hs'                "Haskell plugin
-Plugin 'benmills/vimux'            "A plugin to interact with tmux 
+Plugin 'tpope/vim-surround'        " Change surrounding marks
+Plugin 'dag/vim2hs'                " Haskell plugin
+Plugin 'benmills/vimux'            " interact with tmux 
+
+Plugin 'alvan/vim-closetag'        " Closing tag for html
+Plugin 'ap/vim-css-color'          " Color previews for CSS
 
 " The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
