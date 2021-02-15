@@ -238,7 +238,10 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+--myLogHook = return ()
+myLogHook h = dynamicLogWithPP $ xmobarPP {
+  ppOutput = hPutStrLn h
+ } 
 
 --myLogHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP { 
 --  ppOutput = \x -> hPutStrLn xmb x,
@@ -265,7 +268,7 @@ myStartupHook = do
 		spawnOnce "compton &"
 		spawnOnce "nm-applet &"
 		spawnOnce "blueman-applet &"
-		spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true"
+		spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x282c34  --height 19 &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -274,16 +277,8 @@ myStartupHook = do
 --
 main :: IO ()
 main = do 
-  xmproc <- spawnPipe "xmobar /home/zerox/.config/xmobar/xmobarD.conf"
-  xmonad $ docks defaults
-
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
---
-defaults = def {
+  h <- spawnPipe "xmobar -d ~/.config/xmobar/xmobar.config"
+  xmonad $ docks $ def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -302,9 +297,19 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
+        logHook            = dynamicLogWithPP $
+                    xmobarPP {
+                            ppOutput = hPutStrLn h
+                            }, 
         startupHook        = myStartupHook
     }
+
+-- A structure containing your configuration settings, overriding
+-- fields in the default config. Any you don't override, will
+-- use the defaults defined in xmonad/XMonad/Config.hs
+--
+-- No need to modify this.
+
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String
