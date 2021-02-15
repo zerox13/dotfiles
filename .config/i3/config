@@ -58,6 +58,9 @@ bindsym $mod+Shift+m mode "$mode_system"
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+#Starting blueman
+exec --no-startup-id blueman-applet
+
 #Start Xcompmgr
 exec --no-startup-id xcompmgr
 
