@@ -75,7 +75,9 @@ syntax on
 scriptencoding utf-8
 
 
-"=========================================================== My maping ========
+"===========================================================
+"                        My maping
+"===========================================================
 
 " -- Disable arrow-keys
 map <Down> <NOP>
@@ -91,19 +93,32 @@ map <C-n> :NERDTreeToggle<CR>
 inoremap {<CR> {<CR>}<C-o>O
 noremap (<cr> (<cr>)<c-o><s-o>)
 
-" --> copyy and paste between system and vim rigister 
+" ---->  system and vim rigister <-----
 "set clipboard=unnamedplus
 "set clipboard=unnamed
 vnoremap <C-y> "+y
 map <C-p> "+p
 
-"--> 
+"------>  Vimux maps <------  
 nmap <leader>l :call VimuxRunCommand("ls") <cr>
 nmap <leader>m :call VimuxRunCommand("make") <cr>
 nmap <leader>r :call VimuxRunCommand("./a") <cr>
-" ============================================================ END  ===========
 
-" ==================================== Latex autocompile and open pdf =========
+"----> Splits navigation <----
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
+"----> Splits Resizeing <----
+noremap <silent> <C-Left> :vertical resize +3 <CR>
+noremap <silent> <C-Right> :vertical resize -3 <CR>
+noremap <silent> <C-Up> :vertical resize +3 <CR>
+noremap <silent> <C-Down> :vertical resize -3 <CR>
+
+
+"===========================================================
+"                  Latex autocompile and open pdf
+"===========================================================
 "
 "map I :! pdflatex %<CR><CR> "This should be changed as I used for other
 "things
