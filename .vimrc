@@ -12,7 +12,7 @@ Plugin 'preservim/nerdtree'        " The file tree plugin
 
 " Languages
 Plugin 'vim-python/python-syntax'
-Plugin 'davidhalter/jedi-vim'      " The python autoComplete plugin
+"Plugin 'davidhalter/jedi-vim'      " The python autoComplete plugin
 Plugin 'SQLUtilities'              " SQL tools, (formatter)
 Plugin 'Align'                     " SQLUtilities Dependencie 
 
