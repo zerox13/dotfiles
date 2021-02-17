@@ -7,21 +7,25 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'morhetz/gruvbox'           " My theme
-Plugin 'preservim/nerdtree'        " The file tree plugin
+Plugin 'morhetz/gruvbox'                         " My theme
+Plugin 'preservim/nerdtree'                      " The file tree plugin
+
+
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'junegunn/rainbow_parentheses.vim'        " The file tree plugin
 
 " Languages
 Plugin 'vim-python/python-syntax'
-"Plugin 'davidhalter/jedi-vim'      " The python autoComplete plugin
-Plugin 'SQLUtilities'              " SQL tools, (formatter)
-Plugin 'Align'                     " SQLUtilities Dependencie 
+"Plugin 'davidhalter/jedi-vim'                   " The python autoComplete plugin
+Plugin 'SQLUtilities'                            " SQL tools, (formatter)
+Plugin 'Align'                                   " SQLUtilities Dependencie 
 
-Plugin 'tpope/vim-surround'        " Change surrounding marks
-Plugin 'dag/vim2hs'                " Haskell plugin
-Plugin 'benmills/vimux'            " interact with tmux 
+Plugin 'tpope/vim-surround'                      " Change surrounding marks
+Plugin 'dag/vim2hs'                              " Haskell plugin
+Plugin 'benmills/vimux'                          " interact with tmux 
 
-Plugin 'alvan/vim-closetag'        " Closing tag for html
-Plugin 'ap/vim-css-color'          " Color previews for CSS
+Plugin 'alvan/vim-closetag'                      " Closing tag for html
+Plugin 'ap/vim-css-color'                        " Color previews for CSS
 
 " The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
@@ -75,6 +79,9 @@ syntax on
 scriptencoding utf-8
 
 
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+let g:rainbow#blacklist = [142]
+
 "===========================================================
 "                        My maping
 "===========================================================
@@ -87,11 +94,13 @@ map <Right> <NOP>
 
 " -- Open nerdTree
 map <C-n> :NERDTreeToggle<CR>
+" -- Toggle rainbowParentheses
+map <Leader>p :RainbowParentheses!!<CR>
 
 " -- auto close brackets
 "noremap {<cr> {<cr>}<c-o><s-o>}
-inoremap {<CR> {<CR>}<C-o>O
-noremap (<cr> (<cr>)<c-o><s-o>)
+"inoremap {<CR> {<CR>}<C-o>O
+"noremap (<cr> (<cr>)<c-o><s-o>)
 
 " ---->  system and vim rigister <-----
 "set clipboard=unnamedplus
@@ -109,6 +118,7 @@ nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
 nnoremap <S-k> <C-w>k
 nnoremap <S-l> <C-w>l
+
 "----> Splits Resizeing <----
 noremap <silent> <C-Left> :vertical resize +3 <CR>
 noremap <silent> <C-Right> :vertical resize -3 <CR>
