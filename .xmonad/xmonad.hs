@@ -264,7 +264,7 @@ myLogHook h = dynamicLogWithPP $ xmobarPP {
 --
 -- By default, do nothing.
 myStartupHook = do
-		spawnOnce "rmmod pcspkr"
+		spawnOnce "rmmod pcspkr &"
 		spawnOnce "compton &"
 		spawnOnce "nm-applet &"
 		spawnOnce "blueman-applet &"
