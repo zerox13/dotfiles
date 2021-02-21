@@ -88,8 +88,8 @@ for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/xfce4-terminal
-bindsym $mod+Shift+Return exec gnome-terminal
+bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal
 #start ranger
 bindsym $mod+f  exec --no-startup-id usr/bin/st -e ~/usr/bin/ranger
 #stat discord
@@ -224,18 +224,20 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+# Launch polybar 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-   status_command i3status
-	position top
-	font pango:mono 9
-	mode dock
-	modifier None
-}
+#bar {
+#   status_command i3status
+#	position top
+#	font pango:mono 9
+#	mode dock
+#	modifier None
+#}
 
 # MyCode
 # #---Letter Key Bindings---# #
