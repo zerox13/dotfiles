@@ -1,3 +1,12 @@
+#Setting some vars
+set $terminal        xfce4-terminal
+set $sndTerminal     xfce4-terminal
+set $ranger          /usr/bin/ranger
+set $scroot          /usr/bin/scrot
+set $compton         compton
+set $feh             feh
+
+
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
@@ -65,11 +74,11 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id xcompmgr
 
 #Start compton to get the compositing to the terminal
-exec --no-startup-id usr/bin/compton
+exec --no-startup-id $compton
 
 #Setting the Wallpaper
 #exec --no-startup-id ~/usr/bin/feh --bg-scale Pictures/wp/simonS2.jpg
-exec --no-startup-id usr/bin/feh --bg-scale Pictures/wp/wp.jpg
+exec --no-startup-id $feh --bg-scale Pictures/wp/wp.jpg
 
 #Disable pcspkr 
 exec --no-startup-id rmmod pcspkr
@@ -88,15 +97,12 @@ for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 
 
 # start a terminal
-<<<<<<< Updated upstream
-bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Shift+Return exec xfce4-terminal
-=======
-bindsym $mod+Return exec usr/bin/st
-bindsym $mod+Shift+Return exec gnome-terminal
->>>>>>> Stashed changes
+bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec $sndTerminal
+#bindsym $mod+Return exec usr/bin/st
+#bindsym $mod+Shift+Return exec gnome-terminal
 #start ranger
-bindsym $mod+f  exec --no-startup-id usr/bin/st -e ~/usr/bin/ranger
+bindsym $mod+f  exec --no-startup-id $terminal -e $ranger
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -256,6 +262,6 @@ bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 #bindsym $mod+Shift+r		exec --no-startup-id winresize
 
 #bindsym - Screen shots 
-bindsym $mod+p exec --no-startup-id ~/usr/bin/scrot -u '%Y%m%d_%H%M%S.png' -e 'mv $f ~/Desktop'
+bindsym $mod+p exec --no-startup-id $scroot -u '%Y%m%d_%H%M%S.png' -e 'mv $f ~/Desktop'
 #fireFOX
 bindsym $mod+b exec --no-startup-id firefox
