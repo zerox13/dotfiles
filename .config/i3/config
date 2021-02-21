@@ -88,8 +88,8 @@ for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/xfce4-terminal
-bindsym $mod+Shift+Return exec gnome-terminal
+bindsym $mod+Return exec /usr/bin/kitty
+bindsym $mod+Shift+Return exec xfce4-terminal
 #start ranger
 bindsym $mod+f  exec --no-startup-id usr/bin/st -e ~/usr/bin/ranger
 #stat discord
