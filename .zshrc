@@ -40,6 +40,10 @@ if [ -f ~/.functions ]; then
 . ~/.functions
 fi
 
+if [ -f ~/.profile ]; then
+. ~/.profile
+fi
+
 if [ -f ~/.self ]; then
 . ~/.self
 fi
