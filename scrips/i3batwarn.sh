@@ -59,7 +59,7 @@ PERCENT="$((REM * 100 / FULL))"
 MESSAGE="Low battery warning, find charger"
 
 # set energy limit in percent, where warning should be displayed
-LIMIT="15"
+LIMIT="90"
 
 I3BAT_TMPDIR="$(mktemp --directory --tmpdir i3batwarn.XXX)"
 NAGBARPIDFILE="${I3BAT_TMPDIR}/nagbarpid_file"
