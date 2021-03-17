@@ -407,7 +407,7 @@ format-underline = #55aa55
 
 [module/updates]
 type = custom/script
-exec = pacman -Qu | wc -l
+exec = ~/.config/polybar/check-updates.sh
 format-underline = #55aa55
 format-prefix = "📦 "
 

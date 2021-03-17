@@ -1,3 +1,5 @@
+# we Can echo DBUS_SESSION_BUS_ADDRESS to see its value if this does not work!
+
 battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
 if [ $battery_level -le 25 ]
 then
