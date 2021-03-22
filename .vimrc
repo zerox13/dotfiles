@@ -26,8 +26,8 @@ Plugin 'benmills/vimux'                          " interact with tmux
 
 Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
-
-" The following are examples of different formats supported.
+Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
+"The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -57,7 +57,7 @@ filetype plugin indent on    " required
 
 
 " ========== General Settings  ========
-
+let g:mapleader = "\<Space>"
 inore jk <Esc>
 let g:gruvbox_contrast_dark = '(hard)'
 set bg=dark 
@@ -79,6 +79,7 @@ colorscheme gruvbox
 syntax on
 scriptencoding utf-8
 
+set pyxversion=3
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [142]
