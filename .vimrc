@@ -71,6 +71,7 @@ set smartindent
 set shiftwidth=2
 set pastetoggle=<F2>
 set encoding=utf-8
+set cursorline                       " Enable highlighting of the current line
 
 
 filetype off                  " required
@@ -125,6 +126,14 @@ noremap <silent> <C-Right> :vertical resize -3 <CR>
 noremap <silent> <C-Up> :vertical resize +3 <CR>
 noremap <silent> <C-Down> :vertical resize -3 <CR>
 
+" TAB in general mode will move to text buffer
+nnoremap <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <S-TAB> :bprevious<CR>
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
 
 "===========================================================
 "                  Latex autocompile and open pdf
