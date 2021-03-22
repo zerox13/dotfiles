@@ -8,8 +8,8 @@
 set $mod Mod4
 
 # Setting some vars
-set $terminal        xfce4-terminal
-set $sndTerminal     alacritty
+set $terminal        alacritty
+set $sndTerminal     xfce4-terminal
 set $ranger          /usr/bin/ranger
 set $scroot          /usr/bin/scrot
 set $compton         compton

@@ -7,3 +7,4 @@ let &packpath = &runtimepath
 source ~/.vimrc
 source $HOME/.config/nvim/plug-config/coc.vim
 
+set cmdheight=1 
