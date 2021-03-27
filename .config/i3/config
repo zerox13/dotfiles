@@ -14,6 +14,8 @@ set $ranger          /usr/bin/ranger
 set $scroot          /usr/bin/scrot
 set $compton         compton
 set $feh             feh
+set $menu            rofi -show drun
+#set $menu            dmenu_run
 
 # names for default workspaces 
 set $ws1 "1"
@@ -142,7 +144,8 @@ exec --no-startup-id rmmod pcspkr
 #            My mapping                  #
 ##########################################
 
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec $menu
+bindsym $mod+c exec $HOME/scripts/dmscripts/dmconf
 
 # ---> Program mapping <---
 bindsym $mod+Return exec             $terminal
