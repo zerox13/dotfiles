@@ -16,6 +16,7 @@ set $compton         compton
 set $feh             feh
 set $menu            rofi -show drun
 #set $menu            dmenu_run
+set $screenLayout    $HOME/.screenLayout/thinkV.sh 
 
 # names for default workspaces 
 set $ws1 "1"
@@ -128,6 +129,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xcompmgr
 exec --no-startup-id $compton
+exec --no-startup-id $screenLayout
 
 #Setting the Wallpaper using feh
 #exec --no-startup-id ~/usr/bin/feh --bg-scale Pictures/wp/simonS2.jpg
