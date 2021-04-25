@@ -7,7 +7,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'morhetz/gruvbox'                         " My theme
+"Plugin 'morhetz/gruvbox'                         " My theme
+Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'preservim/nerdtree'                      " The file tree plugin
 
 
@@ -51,7 +52,7 @@ filetype plugin indent on    " required
 " ========== General Settings  ========
 let g:mapleader = "\<Space>"
 inore jk <Esc>
-let g:gruvbox_contrast_dark = '(hard)'
+"let g:gruvbox_contrast_dark = '(hard)'
 set bg=dark 
 set t_Co=256
 set number
@@ -69,7 +70,8 @@ set cmdheight=1
 
 
 filetype off                  " required
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme dracula
 syntax on
 scriptencoding utf-8
 
