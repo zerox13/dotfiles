@@ -2,7 +2,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias la='ls -A'
 alias cdd='cd Desktop'
 alias ls='ls -ahl'
-alias vim='nvim'
+#alias vim='nvim'
 
 
 alias ll='ls -l'
