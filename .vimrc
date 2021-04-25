@@ -29,6 +29,8 @@ Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
 Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
 
+Plugin 'jceb/vim-orgmode'
+
 "The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
