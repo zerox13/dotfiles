@@ -1,13 +1,5 @@
 autoload -U colors && colors
-PROMPT=""
-PROMPT+="%F{red}┌─"
-PROMPT+="[%(?.%F{green}√.%F{red}?) %F{red}%!]─"
-PROMPT+="[%B%F{yellow}Abbe%F{red}@%F{cyan}%m%b%F{red}]─"
-PROMPT+="[%F{white}%6~%F{red}] "
-PROMPT+="
-└──╼ %# %F{yellow}"
-
-
+#
 #Do things related to my mac (There should be a better way to detect the OS!!!)
 if [[ "$OSTYPE" == "darwin"* ]] then 
 	 #set the path to zsh highlighting dynamic
