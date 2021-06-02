@@ -21,6 +21,11 @@ _comp_options+=(globdots) #Include hidden files
 #bindkey -v
 #export KEYTIMEOUT=1
 
+if [ -e $HOME/zsh/manjaro-zsh-prompt ]; then
+	source $HOME/zsh/manjaro-zsh-prompt
+fi
+
+
 #-----< Update the alias >------
 if [ -f ~/.aliases ]; then
 . ~/.aliases
@@ -45,5 +50,5 @@ fi
 
 #This should also be last?
 #This is the starship prompt thing
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 source $zshHighlightPath 2> /dev/null

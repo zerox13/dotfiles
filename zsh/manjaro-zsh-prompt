@@ -7,7 +7,7 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
   *)
       if [[ $TERM == "linux" ]]; then
         # TTY does not have powerline fonts
-        source /usr/share/zsh/zsh-maia-prompt
+        source $HOME/zsh/zsh-maia-prompt
         alias x='startx ~/.xinitrc'
       elif [[ "$USE_POWERLINE" == "true" ]]; then
         # Use powerline
@@ -18,7 +18,7 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
         ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
       else
         # Don't use powerline anyway
-        source /usr/share/zsh/zsh-maia-prompt
+        source $HOME/zsh/zsh-maia-prompt
         source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
         ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
         ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
