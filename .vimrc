@@ -71,6 +71,7 @@ set pyxversion=3
 set cmdheight=1
 
 
+
 filetype off                  " required
 "colorscheme gruvbox
 colorscheme dracula
@@ -96,13 +97,16 @@ map <C-n> :NERDTreeToggle<CR>
 " -- Toggle rainbowParentheses
 map <Leader>p :RainbowParentheses!!<CR>
 
+map <Leader>s :set spell! spelllang=en_us<CR>
+
+
 " -- auto close brackets
 "noremap {<cr> {<cr>}<c-o><s-o>}
 "inoremap {<CR> {<CR>}<C-o>O
 "noremap (<cr> (<cr>)<c-o><s-o>)
 
 " ---->  system and vim rigister <-----
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 "set clipboard=unnamed
 vnoremap <C-y> "+y
 map <C-p> "+p
@@ -137,9 +141,10 @@ vnoremap > >gv
 "                  Latex autocompile and open pdf
 "===========================================================
 "
-"map I :! pdflatex %<CR><CR> "This should be changed as I used for other
-"things
+"This should be changed as I used for other things
+"map I :! pdflatex %<CR><CR> 
+map I :! pdflatex main.tex <CR><CR>
 "
-"map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
+map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
 " ============================================================ END  ===========
 
