@@ -145,6 +145,7 @@ vnoremap > >gv
 "map I :! pdflatex %<CR><CR> 
 map I :! pdflatex main.tex <CR><CR>
 "
-map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
+map S :! okular main.pdf & disown <CR><CR>
+"map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
 " ============================================================ END  ===========
 
