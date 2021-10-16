@@ -27,10 +27,11 @@ Plugin 'benmills/vimux'                          " interact with tmux
 
 Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
-Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
+"Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
 
 Plugin 'jceb/vim-orgmode'
 
+Plugin 'udalov/kotlin-vim'
 "The following are examples of different formats supported.
 "Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -67,8 +68,11 @@ set shiftwidth=2
 set pastetoggle=<F2>
 set encoding=utf-8
 set pyxversion=3
-"set cursorline                       " Enable highlighting of the current line
+set cursorline                       " Enable highlighting of the current line
 set cmdheight=1
+
+set foldenable
+set foldmethod = indent
 
 
 
@@ -106,23 +110,28 @@ map <Leader>s :set spell! spelllang=en_us<CR>
 "noremap (<cr> (<cr>)<c-o><s-o>)
 
 " ---->  system and vim rigister <-----
+"  OBS, might need to install gvim to fix the problem 
+"       of the setting the clipboard
 set clipboard=unnamedplus
 "set clipboard=unnamed
 vnoremap <C-y> "+y
 map <C-p> "+p
 
 "------>  Vimux maps <------  
+"
 nmap <leader>l :call VimuxRunCommand("ls") <cr>
 nmap <leader>m :call VimuxRunCommand("make") <cr>
 nmap <leader>r :call VimuxRunCommand("./a") <cr>
 
 "----> Splits navigation <----
+"
 nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
 nnoremap <S-k> <C-w>k
 nnoremap <S-l> <C-w>l
 
 "----> Splits Resizeing <----
+"
 noremap <silent> <C-Left> :vertical resize +3 <CR>
 noremap <silent> <C-Right> :vertical resize -3 <CR>
 noremap <silent> <C-Up> :vertical resize +3 <CR>
@@ -143,7 +152,7 @@ vnoremap > >gv
 "
 "This should be changed as I used for other things
 "map I :! pdflatex %<CR><CR> 
-map I :! pdflatex main.tex <CR><CR>
+map <leader>i :! pdflatex main.tex <CR><CR>
 "
 map S :! okular main.pdf & disown <CR><CR>
 "map S :! okular $(echo % \|sed 's/tex$/pdf/') & disown <CR><CR>
