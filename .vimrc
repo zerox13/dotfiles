@@ -72,7 +72,7 @@ set cursorline                       " Enable highlighting of the current line
 set cmdheight=1
 
 set foldenable
-set foldmethod = indent
+set foldmethod=indent
 
 
 
