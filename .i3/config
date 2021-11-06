@@ -47,7 +47,7 @@ exec_always --no-startup-id xrandr --auto
 exec_always --no-startup-id nitrogen --restore 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
-
+exec_always --no-startup-id blueman-applet  
 
 ################## MY CODE ##################
 
