@@ -7,10 +7,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ryanoasis/vim-devicons'
-"Plugin 'morhetz/gruvbox'                         " My theme
+Plugin 'morhetz/gruvbox'                         " My theme
 Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'preservim/nerdtree'                      " The file tree plugin
 
+Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/rainbow_parentheses.vim'        " The file tree plugin
@@ -27,7 +28,7 @@ Plugin 'benmills/vimux'                          " interact with tmux
 
 Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
-Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
+"Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
 
 Plugin 'jceb/vim-orgmode'
 
@@ -55,7 +56,7 @@ filetype plugin indent on    " required
 " ========== General Settings  ========
 let g:mapleader = "\<Space>"
 inore jk <Esc>
-"let g:gruvbox_contrast_dark = '(hard)'
+let g:gruvbox_contrast_dark = '(hard)'
 set bg=dark 
 set t_Co=256
 set number
@@ -76,12 +77,16 @@ set foldmethod=indent
 
 
 
+
 filetype off                  " required
-"colorscheme gruvbox
-colorscheme dracula
+colorscheme gruvbox
+"colorscheme dracula
 syntax on
 scriptencoding utf-8
 
+" Spell check 
+"highlight clear SpellBad
+highlight SpellBad ctermfg=016 ctermbg=226 guifg=#fff000 guibg=#ffff00
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [142]

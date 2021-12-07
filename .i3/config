@@ -40,11 +40,12 @@ bindsym $mod+Shift+u exec --no-startup-id setxkbmap us
 #            Autostart things            #
 ##########################################
 
-# Launch polybar 
 
 exec_always --no-startup-id $HOME/.screenlayout/thinkvision.sh 
 exec_always --no-startup-id xrandr --auto 
 exec_always --no-startup-id nitrogen --restore 
+#
+# Launch polybar 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
 exec_always --no-startup-id blueman-applet  

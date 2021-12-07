@@ -11,6 +11,7 @@ Plugin 'morhetz/gruvbox'                         " My theme
 Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'preservim/nerdtree'                      " The file tree plugin
 
+Plugin 'lervag/vimtex'
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/rainbow_parentheses.vim'        " The file tree plugin
