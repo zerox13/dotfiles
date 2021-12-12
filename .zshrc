@@ -14,6 +14,11 @@ if [ -f ~/.functions ]; then
 . ~/.functions
 fi
 
+if [ -f ~/.aliases ]; then
+. ~/.aliases
+fi
+
+
 # Use manjaro zsh prompt
 if [[ -e .profile ]]; then
   source .profile

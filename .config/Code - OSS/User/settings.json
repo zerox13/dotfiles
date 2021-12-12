@@ -1,6 +1,5 @@
 {
     "python.pythonPath": "/Library/Developer/CommandLineTools/usr/bin/python3",
-    "window.menuBarVisibility": "toggle",
     "vim.insertModeKeyBindings":[
         {
             "before": ["j", "k"],
@@ -28,7 +27,6 @@
 "C_Cpp.updateChannel": "Insiders",
 "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
 "workbench.sideBar.location": "right",
-"workbench.activityBar.visible": false,
 "editor.minimap.enabled": false,
 "terminal.explorerKind": "external",
 "terminal.external.linuxExec": "/usr/bin/alacritty",

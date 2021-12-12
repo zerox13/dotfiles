@@ -50,7 +50,6 @@ colors = [["#282c34", "#282c34"], # panel background
           ["#ecbbfb", "#ecbbfb"]] # backbround for inactive screens
 
 
-
 keys = [
         # Switch between windows
         Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -95,6 +94,8 @@ keys = [
 
         Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+        Key([mod], "d", lazy.spawn("rofi -show run"), 
+            desc="Spawn a command using a prompt widget"),
         Key([mod], "r", lazy.spawncmd(),
             desc="Spawn a command using a prompt widget"),
         ]
@@ -117,7 +118,7 @@ for i in groups:
         ])
 
 layouts = [
-        layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
+        layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=2),
         layout.Max(),
         # Try more layouts by unleashing below layouts.
         # layout.Stack(num_stacks=2),
@@ -165,7 +166,6 @@ screens = [
                         padding_x = 3,
                         borderwidth = 3,
                         active = colors[2],
-                        inactive = colors[7],
                         rounded = False,
                         highlight_color = colors[1],
                         highlight_method = "line",
@@ -176,13 +176,6 @@ screens = [
                         foreground = colors[2],
                         background = colors[0]
                         ),
-                    #                    widget.Prompt(
-                    #                        prompt = prompt,
-                    #                        font = "Ubuntu Mono",
-                    #                        padding = 10,
-                    #                        foreground = colors[3],
-                    #                        background = colors[1]
-                    #                        ),
                     widget.Sep(
                         linewidth = 0,
                         padding = 40,
@@ -205,21 +198,19 @@ screens = [
                         background = colors[0]
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[0],
                         foreground = colors[5],
                         padding = 0,
                         fontsize = 37
                         ),
                 widget.Net(
-                        interface = "enp6s0",
+                        interface = "wlp58s0",
                         format = '{down} ↓↑ {up}',
                         foreground = colors[2],
                         background = colors[5],
                         padding = 5
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[5],
                         foreground = colors[4],
                         padding = 0,
@@ -239,7 +230,6 @@ screens = [
                         padding = 5
                         ),
                 widget.TextBox(
-                        text='',
                         background = colors[4],
                         foreground = colors[5],
                         padding = 0,
@@ -261,7 +251,6 @@ screens = [
                         background = colors[5]
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[5],
                         foreground = colors[4],
                         padding = 0,
@@ -281,7 +270,6 @@ screens = [
                         padding = 5
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[4],
                         foreground = colors[5],
                         padding = 0,
@@ -299,7 +287,6 @@ screens = [
                         padding = 5
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[5],
                         foreground = colors[4],
                         padding = 0,
@@ -311,7 +298,6 @@ screens = [
                         padding = 5
                         ),
                 widget.TextBox(
-                        text = '',
                         background = colors[4],
                         foreground = colors[5],
                         padding = 0,
@@ -374,9 +360,8 @@ wmname = "LG3D"
 # Abbes code
 @hook.subscribe.startup_once
 def autostart():
-    thinkvision = os.path.expanduser('~/.screenlayout/thinkvision.sh')
-    autostart = os.path.expanduser('/.config/qtile/autostart.sh')
-    subprocess.call([thinkvision, autostart])
+    autostart = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([autostart])
 
 
 
