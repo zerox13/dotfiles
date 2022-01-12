@@ -28,27 +28,22 @@ Plugin 'benmills/vimux'                          " interact with tmux
 
 Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
-Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
+
+"Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'williamboman/nvim-lsp-installer'
+"Plugin 'nvim-lua/completion-nvim'
+Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'hrsh7th/cmp-buffer'
+Plugin 'hrsh7th/cmp-path'
+Plugin 'hrsh7th/cmp-cmdline'
+Plugin 'hrsh7th/nvim-cmp'
 
 Plugin 'jceb/vim-orgmode'
 
 Plugin 'udalov/kotlin-vim'
-"The following are examples of different formats supported.
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -72,8 +67,8 @@ set pyxversion=3
 set cursorline                       " Enable highlighting of the current line
 set cmdheight=1
 
-set foldenable
-set foldmethod=indent
+"set foldenable
+"set foldmethod=indent
 
 
 
@@ -90,6 +85,88 @@ highlight SpellBad ctermfg=016 ctermbg=226 guifg=#fff000 guibg=#ffff00
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [142]
+
+
+" ========== Lua LSP  ========
+
+
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+
+lua << EOF
+
+-- treesitter settings
+local configs = require'nvim-treesitter.configs'
+configs.setup {
+	ensure_installed = "maintained", -- Only use parsers that are maintained
+	highlight = { -- enable highlighting
+		enable = true, 
+		},
+	indent = {
+	enable = true, -- default is disabled anyways
+	}
+}
+
+-- LSP-installer settings
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
+  server:setup(opts)
+end)
+
+--
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+--
+
+EOF
 
 "===========================================================
 "                        My maping
@@ -151,6 +228,24 @@ nnoremap <S-TAB> :bprevious<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+"clear search hgihlighting
+nnoremap <leader>h :set hlsearch!<CR>
+
+"========== LSP MAPS
+nmap gd :lua vim.lsp.buf.definition()<cr>
+nmap gD :lua vim.lsp.buf.declaration()<cr>
+nmap gi :lua vim.lsp.buf.implementation()<cr>
+nmap gw :lua vim.lsp.buf.document_symbol()<cr>
+nmap gw :lua vim.lsp.buf.workspace_symbol()<cr>
+nmap gr :lua vim.lsp.buf.references()<cr>
+nmap gt :lua vim.lsp.buf.type_definition()<cr>
+nmap K  :lua vim.lsp.buf.hover()<cr>
+nmap <c-k> :lua vim.lsp.buf.signature_help()<cr>
+nmap <leader>af :lua vim.lsp.buf.code_action()<cr>
+nmap <leader>rn :lua vim.lsp.buf.rename()<cr>
+
+
+"
 "===========================================================
 "                  Latex autocompile and open pdf
 "===========================================================
