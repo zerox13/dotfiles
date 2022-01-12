@@ -17,10 +17,10 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/rainbow_parentheses.vim'        " The file tree plugin
 
 " Languages
-Plugin 'vim-python/python-syntax'
-"Plugin 'davidhalter/jedi-vim'                   " The python autoComplete plugin
 "Plugin 'SQLUtilities'                            " SQL tools, (formatter)
 "Plugin 'Align'                                   " SQLUtilities Dependencie 
+
+Plugin 'jceb/vim-orgmode'
 
 Plugin 'tpope/vim-surround'                      " Change surrounding marks
 Plugin 'dag/vim2hs'                              " Haskell plugin
@@ -35,20 +35,20 @@ Plugin 'neovim/nvim-lspconfig'
 " use LspInstall to install servers!!
 Plugin 'williamboman/nvim-lsp-installer'
 
-" use TSInstall to install parsers!!
+"DO-when-new use TSInstall to install parsers!!
 Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" add the required in Lua config below
-Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" DO-when-new add the required in Lua config below
 Plugin 'hrsh7th/cmp-nvim-lsp'
 Plugin 'hrsh7th/cmp-buffer'
 Plugin 'hrsh7th/cmp-path'
 Plugin 'hrsh7th/cmp-cmdline'
 Plugin 'hrsh7th/nvim-cmp'
 
-Plugin 'jceb/vim-orgmode'
+"Telescope things
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
 
-Plugin 'udalov/kotlin-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -177,7 +177,15 @@ end)
     capabilities = capabilities
   }
 --
+--Telescope 
+require('telescope').setup{
+	pickers = {
+		find_files = {
 
+			}
+
+		},
+	}
 EOF
 
 "===========================================================
@@ -256,8 +264,30 @@ nmap <c-k> :lua vim.lsp.buf.signature_help()<cr>
 nmap <leader>af :lua vim.lsp.buf.code_action()<cr>
 nmap <leader>rn :lua vim.lsp.buf.rename()<cr>
 
+"======== Telescope maps
+nnoremap <leader>bi <cmd>Telescope builtin<cr>
 
-"
+" files/buffers etc
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" vim general things
+nnoremap <leader>cs <cmd>Telescope colorscheme<cr>
+nnoremap <leader>man <cmd>Telescope man_pages<cr>
+nnoremap <leader>ms <cmd>Telescope marks<cr>
+
+
+
+
+" git
+nnoremap <leader>gc <cmd>Telescope git_commits<cr>
+nnoremap <leader>gs <cmd>Telescope git_status<cr>
+
+
+
+""
 "===========================================================
 "                  Latex autocompile and open pdf
 "===========================================================
