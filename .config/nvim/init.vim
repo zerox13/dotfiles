@@ -1,5 +1,5 @@
+" gitHub: Zerox13
 " Auther: Abdulsalam Aldahir 
-" GitHub: Zerox13
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -49,11 +49,14 @@ Plugin 'hrsh7th/nvim-cmp'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ========== General Settings  ========
+let g:rooter_targets = '~/.config*'
+
 let g:mapleader = "\<Space>"
 inore jk <Esc>
 let g:gruvbox_contrast_dark = '(hard)'
@@ -221,15 +224,15 @@ map <C-p> "+p
 
 "------>  Vimux maps <------  
 "
-nmap <leader>l :call VimuxRunCommand("ls") <cr>
-nmap <leader>m :call VimuxRunCommand("make") <cr>
-nmap <leader>r :call VimuxRunCommand("./a") <cr>
+"nmap <leader>l :call VimuxRunCommand("ls") <cr>
+"nmap <leader>m :call VimuxRunCommand("make") <cr>
+nmap <leader>run :call VimuxRunCommand("./a") <cr>
 
 "----> Splits navigation <----
 "
 nnoremap <S-h> <C-w>h
-nnoremap <S-j> <C-w>j
-nnoremap <S-k> <C-w>k
+" nnoremap <S-j> <C-w>j
+" nnoremap <S-k> <C-w>k
 nnoremap <S-l> <C-w>l
 
 "----> Splits Resizeing <----
@@ -238,6 +241,7 @@ noremap <silent> <C-Left> :vertical resize +3 <CR>
 noremap <silent> <C-Right> :vertical resize -3 <CR>
 noremap <silent> <C-Up> :vertical resize +3 <CR>
 noremap <silent> <C-Down> :vertical resize -3 <CR>
+
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
@@ -251,16 +255,21 @@ vnoremap > >gv
 "clear search hgihlighting
 nnoremap <leader>h :set hlsearch!<CR>
 
+"Destroy buffer
+nnoremap <leader>d :bd<CR>
+
+nmap <leader>rr :so %<cr>
+
 "========== LSP MAPS
 nmap gd :lua vim.lsp.buf.definition()<cr>
 nmap gD :lua vim.lsp.buf.declaration()<cr>
 nmap gi :lua vim.lsp.buf.implementation()<cr>
 nmap gw :lua vim.lsp.buf.document_symbol()<cr>
-nmap gw :lua vim.lsp.buf.workspace_symbol()<cr>
 nmap gr :lua vim.lsp.buf.references()<cr>
 nmap gt :lua vim.lsp.buf.type_definition()<cr>
-nmap K  :lua vim.lsp.buf.hover()<cr>
-nmap <c-k> :lua vim.lsp.buf.signature_help()<cr>
+nmap gw :lua vim.lsp.buf.workspace_symbol()<cr>
+nmap <c-k> :lua vim.lsp.buf.hover()<cr>
+nmap <c-h> :lua vim.lsp.buf.signature_help()<cr>
 nmap <leader>af :lua vim.lsp.buf.code_action()<cr>
 nmap <leader>rn :lua vim.lsp.buf.rename()<cr>
 
@@ -268,7 +277,7 @@ nmap <leader>rn :lua vim.lsp.buf.rename()<cr>
 nnoremap <leader>bi <cmd>Telescope builtin<cr>
 
 " files/buffers etc
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files <cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>

@@ -31,5 +31,6 @@
 "terminal.explorerKind": "external",
 "terminal.external.linuxExec": "/usr/bin/alacritty",
 "terminal.integrated.fontFamily": "'SauceCodePro Nerd Font'",
-"liveServer.settings.donotShowInfoMsg": true
+"liveServer.settings.donotShowInfoMsg": true,
+"workbench.iconTheme": "material-icon-theme"
 }
