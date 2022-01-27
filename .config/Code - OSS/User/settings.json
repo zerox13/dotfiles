@@ -7,7 +7,6 @@
         }
     ],
 "editor.lineNumbers": "relative",
-"window.zoomLevel": 1,
 "files.exclude": {
     "**/*.meta": true,
     "*.o": true
@@ -32,5 +31,6 @@
 "terminal.external.linuxExec": "/usr/bin/alacritty",
 "terminal.integrated.fontFamily": "'SauceCodePro Nerd Font'",
 "liveServer.settings.donotShowInfoMsg": true,
-"workbench.iconTheme": "material-icon-theme"
+"workbench.iconTheme": "material-icon-theme",
+"window.zoomLevel": 2
 }

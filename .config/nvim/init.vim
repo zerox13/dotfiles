@@ -283,6 +283,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " vim general things
+nnoremap <leader>. <cmd>Telescope find_files cwd=~/.config <cr>
 nnoremap <leader>cs <cmd>Telescope colorscheme<cr>
 nnoremap <leader>man <cmd>Telescope man_pages<cr>
 nnoremap <leader>ms <cmd>Telescope marks<cr>
