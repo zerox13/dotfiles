@@ -51,6 +51,8 @@ Plugin 'nvim-telescope/telescope.nvim'
 
 Plugin 'tpope/vim-commentary'
 
+Plugin 'echasnovski/mini.nvim', { 'branch': 'stable' }
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -189,6 +191,24 @@ require('telescope').setup{
 
 		},
 	}
+
+--mini
+require('mini.indentscope').setup({})
+require('mini.comment').setup({
+	-- Module mappings. Use `''` (empty string) to disable one.
+  mappings = {
+    -- Toggle comment (like `gcip` - comment inner paragraph) for both
+    -- Normal and Visual modes
+    comment = 'gc',
+
+    -- Toggle comment on current line
+    comment_line = 'gcc',
+
+    -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+    textobject = 'gc',
+  },
+})
+
 EOF
 
 "===========================================================
