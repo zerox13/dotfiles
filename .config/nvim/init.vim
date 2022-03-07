@@ -21,15 +21,12 @@ Plugin 'junegunn/rainbow_parentheses.vim'        " The file tree plugin
 "Plugin 'Align'                                   " SQLUtilities Dependencie 
 
 Plugin 'jceb/vim-orgmode'
-
 Plugin 'tpope/vim-surround'                      " Change surrounding marks
 Plugin 'dag/vim2hs'                              " Haskell plugin
 Plugin 'benmills/vimux'                          " interact with tmux 
-
 Plugin 'alvan/vim-closetag'                      " Closing tag for html
 Plugin 'ap/vim-css-color'                        " Color previews for CSS
 
-"Plugin 'neoclide/coc.nvim', {'branch':'release'} "COC For intellisense
 Plugin 'neovim/nvim-lspconfig'
 
 " use LspInstall to install servers!!
@@ -91,7 +88,8 @@ scriptencoding utf-8
 
 " Spell check 
 "highlight clear SpellBad
-highlight SpellBad ctermfg=016 ctermbg=226 guifg=#fff000 guibg=#ffff00
+"highlight SpellBad ctermfg=016 ctermbg=226 guifg=#fff000 guibg=#ffff00
+highlight SpellBad ctermbg=100 
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [142]
@@ -226,7 +224,7 @@ map <C-n> :NERDTreeToggle<CR>
 " -- Toggle rainbowParentheses
 map <Leader>p :RainbowParentheses!!<CR>
 
-map <Leader>s :set spell! spelllang=en_us<CR>
+map <leader>s :set spell! spelllang=en_us<CR>
 
 
 " -- auto close brackets
