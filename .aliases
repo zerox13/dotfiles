@@ -1,13 +1,8 @@
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias la='ls -A'
-alias cdd='cd Desktop'
-alias ls='ls -ahl --color=auto'
+
+alias grep='grep --color=auto'
+alias ls='ls -Ahl --color=auto'
 alias vim='nvim'
 
 
-alias ll='ls -l'
 
-alias c='clear'
-alias cdR='cd ~/Remote'
-alias uumu='umount ~/Remote'
-alias cdw='cd ~/Remote/cwork'
