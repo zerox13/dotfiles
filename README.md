@@ -1,24 +1,33 @@
 ![](https://i.imgur.com/AKIRizD.png)
 
 # Dotfiles
-Like all the other nerds, this is my dotfiles repo.. 
-
-i Use it to manage all the dotfiles in my machines..
-
-You can either use it as a bare clone in you $HOME or as a normal clone with 
-files links and so.. There is a setup.sh that helps to setup the links, but it is not perfect thou.
 
 ## To use as a bare clone
-The idea is to keep the dotfiles where they are by making the home directory as
-a work-tree to the dotfiles git repo. In other words, we will have a bare clone of the repo in our home directory, where the whole home dir is the work-tree.  
 
-To make life easier, we will have an alias specilly for the dotfile git managements (NOTE: this should be in an .alias or .zshrc)
-
+Use this alias for now,
 ```zsh
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
-For more info read this article.
+Run this snippet to do the job.
+```
+git clone --bare git@github.com:zerox13/dotfiles.git $HOME/.dotfiles
+function config {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+config checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+config config status.showUntrackedFiles no
+```
+
+Want to understand what is going on read this article.
 [article](https://www.atlassian.com/git/tutorials/dotfiles)
 
 ## To use as normal clone clone

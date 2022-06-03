@@ -105,16 +105,16 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 lua << EOF
 
 -- treesitter settings
-local configs = require'nvim-treesitter.configs'
-configs.setup {
-	ensure_installed = "maintained", -- Only use parsers that are maintained
-	highlight = { -- enable highlighting
-		enable = true, 
-		},
-	indent = {
-	enable = true, -- default is disabled anyways
-	}
-}
+--local configs = require'nvim-treesitter.configs'
+--configs.setup {
+--	ensure_installed = "maintained", -- Only use parsers that are maintained
+--	highlight = { -- enable highlighting
+--		enable = true, 
+--		},
+--	indent = {
+--	enable = true, -- default is disabled anyways
+--	}
+--}
 
 -- LSP-installer settings
 local lsp_installer = require("nvim-lsp-installer")
