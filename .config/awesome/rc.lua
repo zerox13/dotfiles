@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -198,6 +200,11 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+		--
+		local tbox_separator = wibox.widget.textbox(" | ")
+		local l_sep = wibox.widget.textbox(" [ ")
+		local m_sep = wibox.widget.textbox(" ][ ")
+		local r_sep = wibox.widget.textbox(" ] ")
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -208,11 +215,41 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+						wibox.widget.textbox("  "),
+						require("awesome-wm-widgets.spotify-widget.spotify"){
+
+						},
+						wibox.widget.textbox(" "),
+						require("awesome-wm-widgets.cpu-widget.cpu-widget"){
+							width = 70,
+            	step_width = 2,
+            	step_spacing = 0,
+            	color = '#434c5e'
+						},
+						wibox.widget.textbox(" | "),
+						require("awesome-wm-widgets.ram-widget.ram-widget"){
+							widget_height= 40,
+							widget_width= 40
+						},
+						wibox.widget.textbox(" | "),
+						require("awesome-wm-widgets.batteryarc-widget.batteryarc"){
+      				show_current_level = true,
+	            arc_thickness = 1,
+						},
+						wibox.widget.textbox(" | "),
 					 	require("battery-widget") {},
+
+						wibox.widget.textbox(" | "),
             mykeyboardlayout,
+						wibox.widget.textbox(" | "),
+
             mytextclock,
             wibox.widget.systray(),
             s.mylayoutbox,
+
+						require("awesome-wm-widgets.logout-menu-widget.logout-menu"){
+							onlock = function() awful.spawn.with_shell(' xlock -mode euler2d -fg green -bg black') end
+						},
         },
     }
 end)
@@ -318,7 +355,10 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey },      "d", function() awful.util.spawn("rofi -show run") end,
-    {description = "run rofi", group = "launcher"}),
+    {description = "run prompt", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"},      "r", function() awful.util.spawn("rofi -show ssh") end,
+    {description = "ssh prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
