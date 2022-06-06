@@ -159,7 +159,7 @@ local function set_wallpaper(s)
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)
         end
-        gears.wallpaper.maximized("/usr/share/backgrounds/i3_default_background.jpg", s, true)
+        gears.wallpaper.maximized("/home/abbe/Pictures/wp.jpg", s, true)
     end
 end
 
