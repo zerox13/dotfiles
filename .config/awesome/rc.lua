@@ -97,7 +97,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+mylauncher = awful.widget.launcher({ image = "/home/abbe/.config/awesome/manjaro.png",
                                      menu = mymainmenu })
 
 -- Menubar configuration
@@ -210,6 +210,9 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+
+						mylauncher,
+						wibox.widget.textbox("  "),
             s.mytaglist,
         },
         s.mytasklist, -- Middle widget
@@ -267,10 +270,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 
 		awful.key({modkey, "Shift"}, "u", function () awful.spawn.with_shell("setxkbmap us") end,
-		{description="Change keyboardlayout", group="awesome"}),
+							{description="Change keyboardlayout", group="awesome"}),
 
 		awful.key({modkey, "Shift"}, "s", function () awful.spawn.with_shell("setxkbmap se") end,
-		{description="Change keyboardlayout", group="awesome"}),
+							{description="Change keyboardlayout", group="awesome"}),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -360,6 +363,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"},      "r", function() awful.util.spawn("rofi -show ssh") end,
     {description = "ssh prompt", group = "launcher"}),
 
+    awful.key({ modkey, "Shift"   }, "m",
+        function ()
+					awful.util.spawn("rofi -show p -modi p:./.config/rofi/power_menu")
+        end ,
+        {description = "(un)maximize horizontally", group = "client"}),
+
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -410,13 +420,7 @@ clientkeys = gears.table.join(
             c.maximized_vertical = not c.maximized_vertical
             c:raise()
         end ,
-        {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize vertically", group = "client"})
 )
 
 -- Bind all key numbers to tags.
