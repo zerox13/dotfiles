@@ -365,7 +365,7 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift"   }, "m",
         function ()
-					awful.util.spawn("rofi -show p -modi p:./.config/rofi/power_menu")
+					awful.util.spawn("./.config/dmenu/power_menu")
         end ,
         {description = "(un)maximize horizontally", group = "client"}),
 
