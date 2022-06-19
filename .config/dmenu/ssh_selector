@@ -1,0 +1,21 @@
+#!/bin/sh
+
+TERMINAL="alacritty --hold -e"
+
+ssh_user="dv18aar"
+ssh_hosts=("itchy" "salt" "scratchy")
+ssh_domain="cs.umu.se"
+
+selected_host=$(printf '%s\n' "${ssh_hosts[@]}" | dmenu \
+	-nb "${COLOR_BACKGROUND:-#151515}" \
+	-nf "${COLOR_DEFAULT:-#aaaaaa}" \
+	-sf "${COLOR_HIGHLIGHT:-#589cc5}" \
+	-sb "#1a1a1a" \
+	-i -p "SSH" "$@" -l 5)
+
+
+
+if [[ " ${ssh_hosts[*]} " =~ " ${selected_host} " ]]; then
+	$TERMINAL ssh $ssh_user"@"$selected_host"."$ssh_domain
+fi
+

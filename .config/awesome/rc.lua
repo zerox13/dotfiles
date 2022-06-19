@@ -48,6 +48,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.useless_gap = 2
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -360,7 +361,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey },      "d", function() awful.util.spawn("rofi -show run") end,
     {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey, "Shift"},      "r", function() awful.util.spawn("rofi -show ssh") end,
+    awful.key({ modkey, "Shift"},      "r",
+			function() awful.util.spawn("./.config/dmenu/ssh_selector") end,
     {description = "ssh prompt", group = "launcher"}),
 
     awful.key({ modkey, "Shift"   }, "m",
