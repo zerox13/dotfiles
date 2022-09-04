@@ -19,3 +19,8 @@ function wea(){
 	fi
 
 }
+
+# Maven and java funtions
+function mvnB(){
+	mvn archetype:generate -DgroupId=com.dv18aar -DartifactId=$1 -DarchetypeArtifactId=maven-archetype-quickstart 		-DinteractiveMode=false
+}

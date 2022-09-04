@@ -269,6 +269,10 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+		awful.key({ }, "XF86MonBrightnessDown", function ()
+		    awful.util.spawn("xbacklight -dec 15") end),
+		awful.key({ }, "XF86MonBrightnessUp", function ()
+		    awful.util.spawn("xbacklight -inc 15") end),
 
 		awful.key({modkey, "Shift"}, "u", function () awful.spawn.with_shell("setxkbmap us") end,
 							{description="Change keyboardlayout", group="awesome"}),

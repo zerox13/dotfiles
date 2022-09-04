@@ -3,7 +3,7 @@
 TERMINAL="alacritty --hold -e"
 
 ssh_user="dv18aar"
-ssh_hosts=("itchy" "salt" "scratchy")
+ssh_hosts=("itchy" "salt" "scratchy" "rikki-tikki-tavi")
 ssh_domain="cs.umu.se"
 
 selected_host=$(printf '%s\n' "${ssh_hosts[@]}" | dmenu \
