@@ -19,6 +19,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 
+local volume_control = require("volume-control")
+
+volumecfg = volume_control({})
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -202,7 +205,10 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
 		--
-		local tbox_separator = wibox.widget.textbox(" | ")
+		local tbox_separator = wibox.widget {
+			markup = "<span foreground='#ff0000'> | </span>",
+			widget = wibox.widget.textbox,
+ 		}
 		local l_sep = wibox.widget.textbox(" [ ")
 		local m_sep = wibox.widget.textbox(" ][ ")
 		local r_sep = wibox.widget.textbox(" ] ")
@@ -230,23 +236,26 @@ awful.screen.connect_for_each_screen(function(s)
             	step_spacing = 0,
             	color = '#434c5e'
 						},
-						wibox.widget.textbox(" | "),
+						tbox_separator,
 						require("awesome-wm-widgets.ram-widget.ram-widget"){
 							widget_height= 40,
 							widget_width= 40
 						},
-						wibox.widget.textbox(" | "),
+						tbox_separator,
 						require("awesome-wm-widgets.batteryarc-widget.batteryarc"){
       				show_current_level = true,
-	            arc_thickness = 1,
+	            arc_thickness = 2,
 						},
-						wibox.widget.textbox(" | "),
+						tbox_separator,
 					 	require("battery-widget") {},
 
-						wibox.widget.textbox(" | "),
+						tbox_separator,
+						wibox.widget.textbox(" Keyboard: "),
             mykeyboardlayout,
-						wibox.widget.textbox(" | "),
-
+						tbox_separator,
+						wibox.widget.textbox(" VOL: "),
+						volumecfg.widget,
+						tbox_separator,
             mytextclock,
             wibox.widget.systray(),
             s.mylayoutbox,
@@ -273,6 +282,10 @@ globalkeys = gears.table.join(
 		    awful.util.spawn("xbacklight -dec 15") end),
 		awful.key({ }, "XF86MonBrightnessUp", function ()
 		    awful.util.spawn("xbacklight -inc 15") end),
+
+		awful.key({}, "XF86AudioRaiseVolume", function() volumecfg:up() end),
+    awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
+    awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
 		awful.key({modkey, "Shift"}, "u", function () awful.spawn.with_shell("setxkbmap us") end,
 							{description="Change keyboardlayout", group="awesome"}),
