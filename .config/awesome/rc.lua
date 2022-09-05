@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
 
 local volume_control = require("volume-control")
 
@@ -249,6 +251,30 @@ awful.screen.connect_for_each_screen(function(s)
 						tbox_separator,
 					 	require("battery-widget") {},
 
+						tbox_separator,
+        		brightness_widget{
+        		    type = 'icon_and_text',
+        		    program = 'xbacklight',
+        		    step = 2,
+						},
+						tbox_separator,
+						weather_widget({
+            		api_key='6e73ebedeb0987f5a99311eec246e1b7',
+            		coordinates = {63.8284, 20.2597},
+            		time_format_12h = true,
+								both_units_widget = false,
+            		font_name = 'Carter One',
+            		icons = 'VitalyGorbachev',
+            		icons_extension = '.svg',
+            		show_hourly_forecast = true,
+            		show_daily_forecast = true,
+        		}),
+						tbox_separator,
+						tbox_separator,
+						tbox_separator,
+						tbox_separator,
+						tbox_separator,
+						tbox_separator,
 						tbox_separator,
 						wibox.widget.textbox(" Keyboard: "),
             mykeyboardlayout,
