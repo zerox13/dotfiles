@@ -25,6 +25,38 @@ local volume_control = require("volume-control")
 
 volumecfg = volume_control({})
 
+
+
+--- keyboardlayout icon
+local confDir = os.getenv("HOME") .. '/.config/awesome/'
+local usIcon = confDir .. 'us.svg'
+local kbLang = 'us'
+
+local toggleKb = function()
+        if kbLang == 'us' then
+                kbLang = 'se'
+        else
+                kbLang = 'us'
+        end
+end
+
+local keyboardlayout = awful.widget.button {
+        image = usIcon,
+        resize = false
+}
+
+keyboardlayout:connect_signal("button::press",
+        function(c)
+                toggleKb()
+                c.image = confDir .. kbLang .. '.svg'
+                mykeyboardlayout.next_layout()
+                return c
+        end
+
+)
+--- keyboardlayout icon
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -56,7 +88,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.useless_gap = 2
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal =  os.getenv("TERMINAL") or "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -115,7 +147,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+local textclock = wibox.widget.background()
+textclock:set_widget(wibox.widget.textclock('%H:%M %A | %d %B | V:%V'))
+textclock:set_fg("#ffffff")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -197,18 +231,18 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    --s.mytasklist = awful.widget.tasklist {
-    --    screen  = s,
-    --    filter  = awful.widget.tasklist.filter.currenttags,
-    --    buttons = tasklist_buttons
-    --}
+    s.mytasklist = awful.widget.tasklist {
+        screen  = s,
+        filter  = awful.widget.tasklist.filter.currenttags,
+        buttons = tasklist_buttons
+    }
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
 		--
 		local tbox_separator = wibox.widget {
-			markup = "<span foreground='#ff0000'> | </span>",
+			markup = "<span foreground='#00ff00'> | </span>",
 			widget = wibox.widget.textbox,
  		}
 		local l_sep = wibox.widget.textbox(" [ ")
@@ -219,18 +253,15 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-
-						mylauncher,
 						wibox.widget.textbox("  "),
             s.mytaglist,
+						tbox_separator,
+        		s.mytasklist,
         },
-        s.mytasklist, -- Middle widget
+						textclock,  -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 						wibox.widget.textbox("  "),
-						require("awesome-wm-widgets.spotify-widget.spotify"){
-
-						},
 						wibox.widget.textbox(" "),
 						require("awesome-wm-widgets.cpu-widget.cpu-widget"){
 							width = 70,
@@ -270,19 +301,11 @@ awful.screen.connect_for_each_screen(function(s)
             		show_daily_forecast = true,
         		}),
 						tbox_separator,
-						tbox_separator,
-						tbox_separator,
-						tbox_separator,
-						tbox_separator,
-						tbox_separator,
-						tbox_separator,
-						wibox.widget.textbox(" Keyboard: "),
-            mykeyboardlayout,
+            keyboardlayout,
 						tbox_separator,
 						wibox.widget.textbox(" VOL: "),
 						volumecfg.widget,
 						tbox_separator,
-            mytextclock,
             wibox.widget.systray(),
             s.mylayoutbox,
 
@@ -313,7 +336,11 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
     awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
-		awful.key({modkey, "Shift"}, "u", function () awful.spawn.with_shell("setxkbmap us") end,
+		awful.key({modkey, "Shift"}, "u", function ()
+			toggleKb()
+			keyboardlayout.image = confDir .. kbLang .. '.svg'
+			mykeyboardlayout.next_layout()
+		end,
 							{description="Change keyboardlayout", group="awesome"}),
 
 		awful.key({modkey, "Shift"}, "s", function () awful.spawn.with_shell("setxkbmap se") end,
@@ -654,7 +681,7 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("focus", function(c) c.border_color = "#00ff00" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 --
@@ -665,5 +692,4 @@ awful.spawn.with_shell("compton")
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("pamac-tray")
 awful.spawn.with_shell("nm-applet")
-
-
+awful.spawn.with_shell("setxkbmap -layout 'us,se'")
