@@ -10,7 +10,7 @@ case "$(echo -e "Lock\nLogout\nShutdown\nRestart\nSuspend" | dmenu \
     "Power:" -l 5)" in
         Shutdown) exec systemctl poweroff;;
         Restart) exec systemctl reboot;;
-        Lock) exec xlock -mode euler2d -fg green -bg black;;
+        Lock) exec xlock -mode demon -fg green -bg black;;
         Logout) kill -HUP $XDG_SESSION_PID;;
         Suspend) exec systemctl suspend;;
 esac

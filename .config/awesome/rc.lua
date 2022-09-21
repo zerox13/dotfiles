@@ -250,6 +250,7 @@ awful.screen.connect_for_each_screen(function(s)
 		local r_sep = wibox.widget.textbox(" ] ")
     -- Add widgets to the wibox
     s.mywibox:setup {
+				expand = "none",
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
