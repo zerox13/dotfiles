@@ -4,6 +4,8 @@ alias grep='grep --color=auto'
 alias ls='ls -Ahl --color=auto'
 alias vim='nvim'
 alias k='kubectl'
+alias d='docker'
+alias kr='kubectl rabbitmq'
 
 
 

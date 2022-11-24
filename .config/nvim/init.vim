@@ -87,8 +87,8 @@ autocmd InsertEnter * set cul " toggle line color to indicate mode switching
 
 
 filetype off                  " required
-"colorscheme gruvbox
-colorscheme dracula
+colorscheme gruvbox
+"colorscheme dracula
 syntax on
 scriptencoding utf-8
 

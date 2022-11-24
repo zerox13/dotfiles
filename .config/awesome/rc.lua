@@ -342,6 +342,9 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
 														-- {{{ Key bindings
 														globalkeys = gears.table.join(
+														awful.key({modkey}, "y", function ()
+															awful.util.spawn_with_shell("sleep 0.5 && scrot -s")
+														end),
 														awful.key({ }, "XF86MonBrightnessDown", function ()
 															awful.util.spawn("xbacklight -dec 15") end),
 															awful.key({ }, "XF86MonBrightnessUp", function ()
