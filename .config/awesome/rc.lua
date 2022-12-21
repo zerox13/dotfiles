@@ -35,6 +35,8 @@ local kbLang = 'us'
 local toggleKb = function()
         if kbLang == 'us' then
                 kbLang = 'se'
+        elseif kbLang == 'se' then
+                kbLang = 'ar'
         else
                 kbLang = 'us'
         end
@@ -354,15 +356,13 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 																awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
 																awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
-																awful.key({modkey, "Shift"}, "u", function ()
+																awful.key({modkey, "Shift"}, "Left", function ()
 																	toggleKb()
 																	keyboardlayout.image = confDir .. kbLang .. '.svg'
 																	mykeyboardlayout.next_layout()
 																end,
 																{description="Change keyboardlayout", group="awesome"}),
 
-																awful.key({modkey, "Shift"}, "s", function () awful.spawn.with_shell("setxkbmap se") end,
-																{description="Change keyboardlayout", group="awesome"}),
 
 																awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
 																{description="show help", group="awesome"}),
@@ -710,4 +710,4 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 									awful.spawn.with_shell("blueman-applet")
 									awful.spawn.with_shell("pamac-tray")
 									awful.spawn.with_shell("nm-applet")
-									awful.spawn.with_shell("setxkbmap -layout 'us,se'")
+									awful.spawn.with_shell("setxkbmap -layout 'us,se,ar'")
