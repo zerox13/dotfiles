@@ -26,3 +26,9 @@ fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/abbe/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/abbe/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/abbe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/abbe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

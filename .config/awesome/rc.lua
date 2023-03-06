@@ -308,6 +308,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 																	tbox_separator,
 																	weather_widget({
 																		api_key='6e73ebedeb0987f5a99311eec246e1b7',
+																		timeout = 180,
 																		coordinates = {63.8284, 20.2597},
 																		time_format_12h = true,
 																		both_units_widget = false,
