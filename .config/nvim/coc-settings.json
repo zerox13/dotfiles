@@ -1,5 +1,0 @@
-{
-	"diagnostic.virtualText": true,
-	"javascript.suggestionActions.enabled": false,
-	"diagnostic.checkCurrentLineOnly": true
-}
