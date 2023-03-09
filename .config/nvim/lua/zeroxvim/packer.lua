@@ -21,16 +21,9 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	use { 
-		'morhetz/gruvbox',
-		as = 'gruvbox',
-		config = function()
-			vim.cmd.colorscheme('rose-pine')
-		end
-	}
+	use {'ellisonleao/gruvbox.nvim'}
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
+	use {'nvim-treesitter/nvim-treesitter',
 		{run = ':TSUpdate'}
 	}
 	use {"theprimeagen/harpoon"}
@@ -57,8 +50,18 @@ return require('packer').startup(function(use)
 			{'L3MON4D3/LuaSnip'},
 			{'rafamadriz/friendly-snippets'},
 		}
-	}
+    }
+    use 'nvim-tree/nvim-web-devicons'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
-
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+    }
 
 end)

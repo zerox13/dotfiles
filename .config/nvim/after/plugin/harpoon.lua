@@ -1,3 +1,6 @@
+-- Auther: Abdulsalam Aldahir 
+-- GitHub: Zerox13
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 

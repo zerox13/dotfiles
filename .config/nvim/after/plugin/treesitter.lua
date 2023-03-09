@@ -1,3 +1,7 @@
+-- Auther: Abdulsalam Aldahir 
+-- GitHub: Zerox13
+
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {"help", "c", "lua", "vim", "python"},
