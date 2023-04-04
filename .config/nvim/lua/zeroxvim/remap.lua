@@ -28,3 +28,9 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+
+-- LaTeX maps 
+vim.keymap.set("n", "<leader>lc", ":! pdflatex main.tex <CR><CR>")
+vim.keymap.set("n", "<leader>lv", ":! okular main.pdf & disown <CR><CR>")
+
+
