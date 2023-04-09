@@ -15,7 +15,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "<leader>s", ":set spell! spelllang=en_us<CR>")
+vim.keymap.set("n", "<leader>S", ":set spell! spelllang=en_us<CR>")
 
 
  -- new stuff
